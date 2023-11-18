@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+
+
+{% if user.is_authenticated %}
+
+    <h1>Seja bem-vindo!</h1>
+
+{% else %}
+
+<div class="col-md-6 offset-md-3">
+<h1>Login</h1>
+<br/>
+
+<form method="POST" action="{% url 'home' %}">
+    {% csrf_token %}
+    
+        <div class="mb-3">
+          
+          <input type="text" class="form-control" name="username" id="username" autocomplete="given-name"
+           placeholder="Digite seu primeiro nome" required>
+        </div>
+        <div class="mb-3">
+          
+          <input type="password" class="form-control" name="password" id="password" autocomplete="given-passwd"
+           placeholder="Digite sua senha" required>
+        </div>
+        
+        <br/>
+        <button type="submit" class="btn btn-secondary">Entrar</button>
+      </form>
+</div>
+
+{% endif %}
+
+{% endblock %}
